@@ -1,6 +1,5 @@
 package com.gabriel.noticias.api.model;
 
-import com.gabriel.noticias.domain.model.Autor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,8 +10,9 @@ import java.time.OffsetDateTime;
 public class NoticiaModel {
 
     private Long id;
+    private AutorModelResumo autor;
     private String titulo;
     private String conteudo;
-    private AutorModelResumo autor;
+    private Integer likes;
     private OffsetDateTime dataCriacao;
 }

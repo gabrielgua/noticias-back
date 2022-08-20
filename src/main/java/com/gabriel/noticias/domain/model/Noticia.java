@@ -4,7 +4,6 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.OffsetDateTime;
-import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -26,13 +25,17 @@ public class Noticia {
     private Autor autor;
 
     @ManyToMany(mappedBy = "likedNoticias")
-    private Set<Leitor> likes;
+    private Set<Leitor> leitoresWhoLiked;
+
+    private Integer likes;
 
     public void adicionarLike(Leitor leitor) {
-        likes.add(leitor);
+        leitoresWhoLiked.add(leitor);
+        setLikes(leitoresWhoLiked.size());
     }
 
     public void removerLike(Leitor leitor) {
-        likes.remove(leitor);
+        leitoresWhoLiked.remove(leitor);
+        setLikes(leitoresWhoLiked.size());
     }
 }

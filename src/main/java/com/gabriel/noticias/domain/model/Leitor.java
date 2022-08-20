@@ -4,10 +4,11 @@ package com.gabriel.noticias.domain.model;
 import com.gabriel.noticias.domain.model.enums.Perfil;
 import lombok.Getter;
 import lombok.Setter;
-import org.aspectj.weaver.ast.Not;
 
-import javax.persistence.*;
-import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import java.util.Set;
 
 @Getter
