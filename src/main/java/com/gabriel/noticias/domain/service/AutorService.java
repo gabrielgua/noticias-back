@@ -3,7 +3,6 @@ package com.gabriel.noticias.domain.service;
 import com.gabriel.noticias.api.exception.DataIntegrityViolationException;
 import com.gabriel.noticias.api.exception.ObjectNotFoundException;
 import com.gabriel.noticias.domain.model.Autor;
-import com.gabriel.noticias.domain.model.Leitor;
 import com.gabriel.noticias.domain.model.Usuario;
 import com.gabriel.noticias.domain.repository.AutorRepository;
 import com.gabriel.noticias.domain.repository.UsuarioRepository;
@@ -40,6 +39,9 @@ public class AutorService {
 
     @Transactional
     public void removerAutor(Autor autor) {
+        if (!autor.getNoticias().isEmpty()) {
+            throw new DataIntegrityViolationException("Autor possui notícias atreladas.");
+        }
         repository.delete(autor);
     }
 

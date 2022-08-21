@@ -3,6 +3,7 @@ package com.gabriel.noticias.domain.service;
 import com.gabriel.noticias.api.exception.DataIntegrityViolationException;
 import com.gabriel.noticias.api.exception.ObjectNotFoundException;
 import com.gabriel.noticias.domain.model.Leitor;
+import com.gabriel.noticias.domain.model.Noticia;
 import com.gabriel.noticias.domain.model.Usuario;
 import com.gabriel.noticias.domain.repository.LeitorRepository;
 import com.gabriel.noticias.domain.repository.UsuarioRepository;
@@ -41,6 +42,8 @@ public class LeitorService {
 
     @Transactional
     public void removerLeitor(Leitor leitor) {
+        var noticias = leitor.getLikedNoticias();
+        noticias.forEach(n -> { n.removerLike(leitor); });
         repository.delete(leitor);
     }
 

@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.OffsetDateTime;
+import java.util.HashSet;
 import java.util.Set;
 
 @Getter
@@ -25,7 +26,7 @@ public class Noticia {
     private Autor autor;
 
     @ManyToMany(mappedBy = "likedNoticias")
-    private Set<Leitor> leitoresWhoLiked;
+    private Set<Leitor> leitoresWhoLiked = new HashSet<Leitor>();
 
     private Integer likes;
 

@@ -37,8 +37,10 @@ public class NoticiaService {
         return repository.save(noticia);
     }
 
-    public void removerNoticia(Long id) {
-        repository.deleteById(id);
+    public void removerNoticia(Noticia noticia) {
+        var leitores = noticia.getLeitoresWhoLiked();
+        leitores.forEach(l -> { l.removerNoticia(noticia); });
+        repository.delete(noticia);
     }
 
     public boolean existePorId(Long id) {

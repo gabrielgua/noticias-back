@@ -58,7 +58,8 @@ public class NoticiaController {
             return ResponseEntity.notFound().build();
         }
 
-        service.removerNoticia(id);
+        Noticia noticia = service.buscarPorId(id);
+        service.removerNoticia(noticia);
         return ResponseEntity.noContent().build();
     }
 

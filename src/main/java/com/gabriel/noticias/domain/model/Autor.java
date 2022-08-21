@@ -6,7 +6,7 @@ import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
-import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -14,7 +14,7 @@ import java.util.List;
 public class Autor extends Usuario{
 
     @OneToMany(mappedBy = "autor")
-    private List<Noticia> noticias;
+    private Set<Noticia> noticias;
 
     public Autor() {
         super();
